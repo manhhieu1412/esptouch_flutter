@@ -1,16 +1,32 @@
 import 'dart:async';
 
-import 'package:esptouch_example/task_parameter_details.dart';
-import 'package:esptouch_example/wifi_info.dart';
+import 'package:esptouch/task_parameter_details.dart';
+import 'package:esptouch/wifi_info.dart';
 import 'package:esptouch_flutter/esptouch_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'ui/views/login_view.dart';
+import 'package:provider/provider.dart';
+import 'core/viewmodels/login_model.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(LoginApp());
 
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
+}
+
+class LoginApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => LoginModel(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LoginView(),
+      ),
+    );
+  }
 }
 
 const helperSSID =
@@ -170,9 +186,10 @@ class _MyAppState extends State<MyApp> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: <Widget>[
           Center(
-            child: OutlineButton(
-              highlightColor: Colors.transparent,
-              highlightedBorderColor: color,
+            child: OutlinedButton(
+              style: ButtonStyle(),
+              // highlightColor: Colors.transparent,
+              // highlightedBorderColor: color,
               onPressed: fetchingWifiInfo ? null : fetchWifiInfo,
               child: fetchingWifiInfo
                   ? Text(
@@ -238,7 +255,7 @@ class _MyAppState extends State<MyApp> {
             thresholdSucBroadcastCount: _thresholdSucBroadcastCount,
           ),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -296,7 +313,7 @@ class TaskRouteState extends State<TaskRoute> {
               return AlertDialog(
                 title: Text('No devices found'),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.of(context)..pop()..pop();
                     },
@@ -340,7 +357,7 @@ class TaskRouteState extends State<TaskRoute> {
   copyValue(BuildContext context, String label, String v) {
     return () {
       Clipboard.setData(ClipboardData(text: v));
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Copied $label to clipboard: $v')));
     };
   }
@@ -363,7 +380,8 @@ class TaskRouteState extends State<TaskRoute> {
                 onLongPress: copyValue(context, 'BSSID', result.bssid),
                 child: Row(
                   children: <Widget>[
-                    Text('BSSID: ', style: Theme.of(context).textTheme.body2),
+                    Text('BSSID: ',
+                        style: Theme.of(context).textTheme.bodyText1),
                     Text(result.bssid,
                         style: TextStyle(fontFamily: 'monospace')),
                   ],
@@ -373,7 +391,7 @@ class TaskRouteState extends State<TaskRoute> {
                 onLongPress: copyValue(context, 'IP', result.ip),
                 child: Row(
                   children: <Widget>[
-                    Text('IP: ', style: Theme.of(context).textTheme.body2),
+                    Text('IP: ', style: Theme.of(context).textTheme.bodyText2),
                     Text(result.ip, style: TextStyle(fontFamily: 'monospace')),
                   ],
                 ),

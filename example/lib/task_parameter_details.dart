@@ -144,8 +144,9 @@ class _OptionalIntegerField extends StatelessWidget {
         if (v == null) {
           return 'Please enter an integer number';
         }
+        return null;
       },
-      autovalidate: true,
+      autovalidateMode: AutovalidateMode.always,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText.toString(),
