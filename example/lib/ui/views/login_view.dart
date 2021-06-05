@@ -7,6 +7,7 @@ import 'package:esptouch/ui/widgets/textfield_widget.dart';
 import 'package:esptouch/ui/widgets/wave_widget.dart';
 
 import 'package:provider/provider.dart';
+import 'add_device_view.dart';
 
 class LoginView extends StatelessWidget {
   @override
@@ -94,6 +95,12 @@ class LoginView extends StatelessWidget {
                 ButtonWidget(
                   title: 'Login',
                   hasBorder: false,
+                  onTab: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddDeviceView()),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 10.0,

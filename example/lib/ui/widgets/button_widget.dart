@@ -4,10 +4,12 @@ import 'package:esptouch/ui/shared/globals.dart';
 class ButtonWidget extends StatelessWidget {
   final String title;
   final bool hasBorder;
+  final GestureTapCallback onTab;
 
   ButtonWidget({
     this.title,
     this.hasBorder,
+    this.onTab,
   });
 
   @override
@@ -26,6 +28,7 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
+          onTap: this.onTab,
           child: Container(
             height: 60.0,
             child: Center(
