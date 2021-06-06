@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as Math;
+
+import 'package:flutter/material.dart';
+
 import 'package:esptouch/ui/widgets/clipper_widget.dart';
 
 class WaveWidget extends StatefulWidget {
@@ -8,17 +10,18 @@ class WaveWidget extends StatefulWidget {
   final Color color;
 
   WaveWidget({
-    this.size,
-    this.yOffset,
-    this.color,
-  });
+    Key? key,
+    required this.size,
+    required this.yOffset,
+    required this.color,
+  }) : super(key: key);
 
   @override
   _WaveWidgetState createState() => _WaveWidgetState();
 }
 
 class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
   List<Offset> wavePoints = [];
 
   @override

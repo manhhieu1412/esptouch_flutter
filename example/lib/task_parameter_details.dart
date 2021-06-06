@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 class TaskParameterDetails extends StatelessWidget {
   const TaskParameterDetails({
-    Key key,
-    @required this.color,
-    @required TextEditingController expectedTaskResults,
-    @required TextEditingController intervalGuideCode,
-    @required TextEditingController intervalDataCode,
-    @required TextEditingController timeoutGuideCode,
-    @required TextEditingController timeoutDataCode,
-    @required TextEditingController repeat,
-    @required TextEditingController portListening,
-    @required TextEditingController portTarget,
-    @required TextEditingController waitUdpReceiving,
-    @required TextEditingController waitUdpSending,
-    @required TextEditingController thresholdSucBroadcastCount,
+    Key? key,
+    required this.color,
+    required TextEditingController expectedTaskResults,
+    required TextEditingController intervalGuideCode,
+    required TextEditingController intervalDataCode,
+    required TextEditingController timeoutGuideCode,
+    required TextEditingController timeoutDataCode,
+    required TextEditingController repeat,
+    required TextEditingController portListening,
+    required TextEditingController portTarget,
+    required TextEditingController waitUdpReceiving,
+    required TextEditingController waitUdpSending,
+    required TextEditingController thresholdSucBroadcastCount,
   })  : _expectedTaskResults = expectedTaskResults,
         _intervalGuideCode = intervalGuideCode,
         _intervalDataCode = intervalDataCode,
@@ -118,29 +118,29 @@ class TaskParameterDetails extends StatelessWidget {
 
 class _OptionalIntegerField extends StatelessWidget {
   const _OptionalIntegerField({
-    Key key,
-    @required this.controller,
-    @required this.labelText,
-    @required this.hintText,
+    Key? key,
+    required this.controller,
+    required this.labelText,
+    required this.hintText,
     this.helperText,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String labelText;
   final int hintText;
-  final String helperText;
+  final String? helperText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.number,
-      validator: (String value) {
-        value = value.trim();
+      validator: (String? value) {
+        value = value?.trim();
         if (value == '') {
           return null;
         }
-        int v = int.tryParse(value, radix: 10);
+        int? v = int.tryParse(value!, radix: 10);
         if (v == null) {
           return 'Please enter an integer number';
         }

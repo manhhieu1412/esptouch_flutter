@@ -12,6 +12,14 @@ import 'add_device_view.dart';
 class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+        create: (context) => LoginModel(), child: LoginViewContainer());
+  }
+}
+
+class LoginViewContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final bool keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
     final model = Provider.of<LoginModel>(context);

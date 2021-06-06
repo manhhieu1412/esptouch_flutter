@@ -6,15 +6,15 @@ import 'package:provider/provider.dart';
 class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final IconData prefixIconData;
-  final IconData suffixIconData;
+  final IconData? suffixIconData;
   final bool obscureText;
-  final Function onChanged;
+  final Function(String)? onChanged;
 
   TextFieldWidget({
-    this.hintText,
-    this.prefixIconData,
+    required this.hintText,
+    required this.prefixIconData,
     this.suffixIconData,
-    this.obscureText,
+    required this.obscureText,
     this.onChanged,
   });
 

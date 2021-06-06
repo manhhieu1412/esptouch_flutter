@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:esptouch/task_parameter_details.dart';
 import 'package:esptouch/wifi_info.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:esptouch_flutter/esptouch_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:esptouch/ui/shared/globals.dart';
 
 class AddDeviceView extends StatefulWidget {
   @override
@@ -40,7 +40,7 @@ class _MyAppState extends State<AddDeviceView> {
   final TextEditingController _waitUdpSending = TextEditingController();
   final TextEditingController _thresholdSucBroadcastCount =
       TextEditingController();
-  ESPTouchPacket _packet = ESPTouchPacket.broadcast;
+  ESPTouchPacket? _packet = ESPTouchPacket.broadcast;
 
   @override
   void dispose() {
@@ -63,33 +63,23 @@ class _MyAppState extends State<AddDeviceView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Global.mediumBlue,
-        buttonTheme: ButtonThemeData(
-          buttonColor: Global.mediumBlue,
-          textTheme: ButtonTextTheme.primary,
-        ),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'ESP-TOUCH',
-            style: TextStyle(
-              fontFamily: 'serif-monospace',
-              fontWeight: FontWeight.w800,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'ESP-TOUCH',
+          style: TextStyle(
+            fontFamily: 'serif-monospace',
+            fontWeight: FontWeight.w800,
           ),
         ),
-        // Using builder to get context without creating new widgets
-        //  https://docs.flutter.io/flutter/material/Scaffold/of.html
-        body: Builder(builder: (BuildContext context) {
-          return Center(
-            child: form(context),
-          );
-        }),
       ),
+      // Using builder to get context without creating new widgets
+      //  https://docs.flutter.io/flutter/material/Scaffold/of.html
+      body: Builder(builder: (BuildContext context) {
+        return Center(
+          child: form(context),
+        );
+      }),
     );
   }
 
@@ -255,7 +245,7 @@ class _MyAppState extends State<AddDeviceView> {
     );
   }
 
-  void setPacket(ESPTouchPacket packet) {
+  void setPacket(ESPTouchPacket? packet) {
     setState(() {
       _packet = packet;
     });
@@ -265,7 +255,7 @@ class _MyAppState extends State<AddDeviceView> {
 class TaskRoute extends StatefulWidget {
   final ESPTouchTask task;
 
-  TaskRoute({this.task});
+  TaskRoute({required this.task});
 
   @override
   State<StatefulWidget> createState() {
@@ -274,9 +264,9 @@ class TaskRoute extends StatefulWidget {
 }
 
 class TaskRouteState extends State<TaskRoute> {
-  Stream<ESPTouchResult> _stream;
-  StreamSubscription<ESPTouchResult> _streamSubscription;
-  Timer _timer;
+  late Stream<ESPTouchResult> _stream;
+  late StreamSubscription<ESPTouchResult> _streamSubscription;
+  late Timer _timer;
 
   final List<ESPTouchResult> _results = [];
 
@@ -288,7 +278,7 @@ class TaskRouteState extends State<TaskRoute> {
     final sending = widget.task.taskParameter.waitUdpSending;
     final cancelLatestAfter = receiving + sending;
     _timer = Timer(cancelLatestAfter, () {
-      _streamSubscription?.cancel();
+      _streamSubscription.cancel();
       if (_results.isEmpty && mounted) {
         showDialog(
             context: context,
@@ -313,7 +303,7 @@ class TaskRouteState extends State<TaskRoute> {
   @override
   dispose() {
     _timer.cancel();
-    _streamSubscription?.cancel();
+    _streamSubscription.cancel();
     super.dispose();
   }
 

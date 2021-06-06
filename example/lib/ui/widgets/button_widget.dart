@@ -4,11 +4,11 @@ import 'package:esptouch/ui/shared/globals.dart';
 class ButtonWidget extends StatelessWidget {
   final String title;
   final bool hasBorder;
-  final GestureTapCallback onTab;
+  final GestureTapCallback? onTab;
 
   ButtonWidget({
-    this.title,
-    this.hasBorder,
+    required this.title,
+    this.hasBorder = false,
     this.onTab,
   });
 
