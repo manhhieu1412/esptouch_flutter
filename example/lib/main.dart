@@ -4,6 +4,7 @@ import 'package:esptouch/ui/views/login_view.dart';
 import 'package:esptouch/ui/views/add_device_view.dart';
 import 'package:esptouch/ui/views/connectivity_view.dart';
 import 'package:esptouch/ui/views/location_permissions.dart';
+import 'package:esptouch/ui/views/test_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class AppComponentState extends State<MyApp> {
-  bool isUserActice = true;
+  bool isUserActice = false;
 
   @override
   void initState() {
@@ -29,7 +30,7 @@ class AppComponentState extends State<MyApp> {
         primaryColor: Global.mediumBlue,
       ),
       title: 'AKASHIC',
-      initialRoute: "/location",
+      initialRoute: "/",
       routes: {
         // '/': (BuildContext context) {
         //   return Scaffold(
@@ -48,6 +49,7 @@ class AppComponentState extends State<MyApp> {
         "/": (context) => isUserActice ? AddDeviceView() : LoginView(),
         "/location": (context) => LocationPermission(),
         "/connectivity": (context) => ConnectivityView(),
+        "/test": (context) => TestView(),
         // "/regi-info": (context) => RegisterInfoScreen(),
         // "/regi-birth": (context) => RegisterBirthScreen(),
         // "/regi-card": (context) => CardAuthentScreen(),
