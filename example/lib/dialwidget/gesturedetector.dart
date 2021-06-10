@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:esptouch/Model/homeinfodata.dart';
+import 'package:esptouch/viewmodels/homeinfodata.dart';
 import 'package:esptouch/dialwidget/controlknob.dart';
 import 'dart:math';
 import 'radial_drag_gesture_detector.dart';

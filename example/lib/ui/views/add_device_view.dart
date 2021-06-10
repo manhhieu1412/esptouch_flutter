@@ -406,7 +406,6 @@ class TaskRouteState extends State<TaskRoute> {
               case ConnectionState.waiting:
                 return waitingState(context);
             }
-            return error(context, 'Unexpected');
           },
           stream: _stream,
         ),

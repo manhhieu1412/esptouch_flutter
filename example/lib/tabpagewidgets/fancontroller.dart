@@ -66,6 +66,5 @@ class FanSpeedControl extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

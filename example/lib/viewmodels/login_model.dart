@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../ui/shared/globals.dart';
+import '../ui/shared/globals.dart';
 
 class LoginModel extends ChangeNotifier {
   get isVisible => _isVisible;

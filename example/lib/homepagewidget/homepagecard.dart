@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:esptouch/homepagewidget/mainpageswitch.dart';
 import 'package:provider/provider.dart';
-import 'package:esptouch/Model/homepagedata.dart';
+import 'package:esptouch/viewmodels/homepagedata.dart';
 import 'package:esptouch/util/util_smarthome.dart';
-import 'package:esptouch/Model/homedatamodel.dart';
+import 'package:esptouch/viewmodels/homedatamodel.dart';
 import 'package:esptouch/controlwidget/airconditionerControl.dart';
 
 class HomePageCard extends StatelessWidget {

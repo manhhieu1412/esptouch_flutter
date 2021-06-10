@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:esptouch/Model/homepagedata.dart';
+import 'package:esptouch/viewmodels/homepagedata.dart';
 import 'package:esptouch/util/util_smarthome.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:esptouch/Model/homeinfodata.dart';
+import 'package:esptouch/viewmodels/homeinfodata.dart';
 import 'package:esptouch/dialwidget/gesturedetector.dart';
 
 class KnobContainer extends StatelessWidget {

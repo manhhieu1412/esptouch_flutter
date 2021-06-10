@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:esptouch/Model/homeinfodata.dart';
+import 'package:esptouch/viewmodels/homeinfodata.dart';
 import 'package:esptouch/tabpagewidgets/tempswitch.dart';
 import 'package:esptouch/tabpagewidgets/fancontroller.dart';
-import 'package:esptouch/Model/homeinfomodel.dart';
+import 'package:esptouch/viewmodels/homeinfomodel.dart';
 
 // not in use
 

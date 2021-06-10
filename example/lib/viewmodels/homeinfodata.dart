@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:esptouch/Model/homeinfomodel.dart';
+import 'package:esptouch/viewmodels/homeinfomodel.dart';
 import 'activetabmodel.dart';
 
 class HomeInfoData extends ChangeNotifier {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:esptouch/icons/my_flutter_app_icons.dart';
 import 'package:provider/provider.dart';
-import 'package:esptouch/Model/homeinfodata.dart';
+import 'package:esptouch/viewmodels/homeinfodata.dart';
 
 class ChangeTempWidget extends StatelessWidget {
   final int setTemp;

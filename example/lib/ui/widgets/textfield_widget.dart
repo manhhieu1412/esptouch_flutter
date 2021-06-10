@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:esptouch/ui/shared/globals.dart';
-import 'package:esptouch/core/viewmodels/login_model.dart';
+import 'package:esptouch/viewmodels/login_model.dart';
 import 'package:provider/provider.dart';
 
 class TextFieldWidget extends StatelessWidget {
