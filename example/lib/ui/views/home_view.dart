@@ -2,34 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esptouch/viewmodels/homepagedata.dart';
 import 'package:esptouch/icons/my_flutter_app_icons.dart';
-import 'package:esptouch/homepagewidget/homeappbar.dart';
-import 'package:esptouch/homepagewidget/homelandscapelayout.dart';
-import 'package:esptouch/homepagewidget/homeportraitlayout.dart';
+import 'package:esptouch/ui/shared/globals.dart';
+import '../widgets/homepagewidget/homeappbar.dart';
+import '../widgets/homepagewidget/homelandscapelayout.dart';
+import '../widgets/homepagewidget/homeportraitlayout.dart';
 
-class Home extends StatefulWidget {
+class UserHome extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _UserHomeState createState() => _UserHomeState();
 }
 
-class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+class _UserHomeState extends State<UserHome> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
-//  static const List<Widget> _widgetOptions = <Widget>[
-//    Text(
-//      'Index 0: home',
-//      style: optionStyle,
-//    ),
-//    Text(
-//      'Index 1: members',
-//      style: optionStyle,
-//    ),
-//    Text(
-//      'Index 2: setting',
-//      style: optionStyle,
-//    ),
-//  ];
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Global.mediumBlue,
+      ),
+      title: 'AKASHIC',
+      initialRoute: '/',
+      routes: {"/": (context) => HomeView()},
+    );
+  }
+}
+
+class HomeView extends StatefulWidget {
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -118,9 +127,3 @@ class ScrollView extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-//https://dribbble.com/shots/6959677-Smart-home/attachments/1785?mode=media

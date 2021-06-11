@@ -51,7 +51,7 @@ class AppComponentState extends State<MyApp> {
         "/location": (context) => LocationPermission(),
         "/connectivity": (context) => ConnectivityView(),
         "/test": (context) => TestView(),
-        "/home": (context) => Home(),
+        "/home": (context) => UserHome(),
         // "/regi-info": (context) => RegisterInfoScreen(),
         // "/regi-birth": (context) => RegisterBirthScreen(),
         // "/regi-card": (context) => CardAuthentScreen(),

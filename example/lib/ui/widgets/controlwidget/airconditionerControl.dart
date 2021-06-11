@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:esptouch/tabpagewidgets/tempswitch.dart';
-import 'package:esptouch/tabpagewidgets/fancontroller.dart';
 import 'dart:math';
-import 'package:esptouch/tabpagewidgets/currenttempwidget.dart';
-import 'package:esptouch/tabpagewidgets/humiditywidget.dart';
-import 'package:esptouch/tabpagewidgets/changetempwidget.dart';
+import 'package:provider/provider.dart';
 import 'package:esptouch/viewmodels/homeinfodata.dart';
 import 'package:esptouch/viewmodels/homeinfomodel.dart';
-import 'package:provider/provider.dart';
-import 'package:esptouch/dialwidget/tickerpainter.dart';
-import 'package:esptouch/dialwidget/knobcontainer.dart';
+import '../tabpagewidgets/tempswitch.dart';
+import '../tabpagewidgets/fancontroller.dart';
+import '../tabpagewidgets/currenttempwidget.dart';
+import '../tabpagewidgets/humiditywidget.dart';
+import '../tabpagewidgets/changetempwidget.dart';
+import '../dialwidget/tickerpainter.dart';
+import '../dialwidget/knobcontainer.dart';
 
 class AirConditionerControlUnit extends StatefulWidget {
   @override

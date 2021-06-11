@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:esptouch/dialwidget/circletickpainter.dart';
+import '../dialwidget/circletickpainter.dart';
 
 class ControlKnob extends StatelessWidget {
   final double knobReading;

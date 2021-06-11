@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:esptouch/viewmodels/homeinfodata.dart';
-import 'package:esptouch/dialwidget/controlknob.dart';
 import 'dart:math';
+import 'package:esptouch/viewmodels/homeinfodata.dart';
+import '../dialwidget/controlknob.dart';
 import 'radial_drag_gesture_detector.dart';
 
 class CircleGestureDetector extends StatefulWidget {
