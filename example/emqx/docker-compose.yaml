@@ -99,8 +99,10 @@ services:
         restart: always
         hostname: haproxy
         ports:
-            - "8080:80"                         # Mở cổng 8080 public -> 80
-            - "443:443"                         # Mở cổng 443  public -> 443
+            - "8080:80"
+            - "443:443"
+            - "18083:18083"
+            - "1883:1883"
         networks:
             - emqx-bridge
 volumes:
