@@ -92,21 +92,17 @@ services:
             - vol-emqx3-data:/opt/emqx/data
             - vol-emqx3-etc:/opt/emqx/etc
             - vol-emqx3-log:/opt/emqx/log
-    haproxy:
-        build: ./haproxy
-        restart: always
+    xtlab-haproxy:
+        build:
+            context: ./xtlab-haproxy
         container_name: haproxy
+        restart: always
         hostname: haproxy
-        depends_on:
-            - emqx1
-            - emqx2
-            - emqx3 
         ports:
-          - "1883:1883"
-          - "1936:1936"
-          - "18083:18083"
+            - "8080:80"                         # Mở cổng 8080 public -> 80
+            - "443:443"                         # Mở cổng 443  public -> 443
         networks:
-         - emqx-bridge        
+            - emqx-bridge
 volumes:
     vol-emqx1-data:
     vol-emqx1-etc:

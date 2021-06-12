@@ -1,0 +1,1 @@
+scp -r * iot:/src/emqx
