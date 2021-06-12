@@ -2,7 +2,7 @@ version: '3'
 
 services:
     emqx1:
-        image: emqx/emqx:4.3.3
+        image: emqx/emqx:${EMGX_VERSION}
         restart: always
         container_name: node1.emqx.io
         hostname: node1.emqx.io        
@@ -33,7 +33,7 @@ services:
             - vol-emqx1-log:/opt/emqx/log
 
     emqx2:
-        image: emqx/emqx:4.3.3
+        image: emqx/emqx:${EMGX_VERSION}
         restart: always
         container_name: node2.emqx.io
         hostname: node2.emqx.io        
@@ -63,7 +63,7 @@ services:
             - vol-emqx2-etc:/opt/emqx/etc
             - vol-emqx2-log:/opt/emqx/log
     emqx3:
-        image: emqx/emqx:4.3.3
+        image: emqx/emqx:${EMGX_VERSION}
         restart: always
         container_name: node3.emqx.io
         hostname: node3.emqx.io
@@ -104,6 +104,7 @@ services:
         ports:
           - "1883:1883"
           - "1936:1936"
+          - "18083:18083"
         networks:
          - emqx-bridge        
 volumes:
