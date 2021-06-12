@@ -104,10 +104,7 @@ class LoginViewContainer extends StatelessWidget {
                   title: 'Login',
                   hasBorder: false,
                   onTab: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AddDeviceView()),
-                    );
+                    Navigator.pushNamed(context, '/home');
                   },
                 ),
                 SizedBox(

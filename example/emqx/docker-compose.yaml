@@ -1,0 +1,126 @@
+version: '3'
+
+services:
+    emqx1:
+        image: emqx/emqx:4.3.3
+        restart: always
+        container_name: node1.emqx.io
+        hostname: node1.emqx.io        
+        environment:
+        - "EMQX_NAME=emqx"
+        - "EMQX_HOST=node1.emqx.io"
+        - "EMQX_CLUSTER__DISCOVERY=static"
+        - "EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io, emqx@node3.emqx.io"
+        - "EMQX_WAIT_TIME=5"
+        - "EMQX_NODE__COOKIE=emqx_dist_cookie"
+        - "EMQX_LOG__CONSOLE=console"
+        - "EMQX_ALLOW_ANONYMOUS=true"
+        - "EMQX_LISTENER__TCP__EXTERNAL=1883"
+        - "EMQX_LISTENER__SSL__EXTERNAL=8883"
+        - "EMQX_LISTENER__WS__EXTERNAL=8083"
+        - "EMQX_LISTENER__WSS__EXTERNAL=8084"
+        - "EMQX_LISTENER__API__MGMT=8080"
+        - "EMQX_MQTT__MAX_PACKET_SIZE=64KB"
+        - "EMQX_LOADED_PLUGINS=emqx_recon,emqx_retainer,emqx_management,emqx_dashboard"
+        - "EMQX_LOADED_MODULES=emqx_mod_acl_internal,emqx_mod_acl_internal"
+        networks:
+            emqx-bridge:
+                aliases:
+                - node1.emqx.io
+        volumes:
+            - vol-emqx1-data:/opt/emqx/data
+            - vol-emqx1-etc:/opt/emqx/etc
+            - vol-emqx1-log:/opt/emqx/log
+
+    emqx2:
+        image: emqx/emqx:4.3.3
+        restart: always
+        container_name: node2.emqx.io
+        hostname: node2.emqx.io        
+        environment:
+        - "EMQX_NAME=emqx"
+        - "EMQX_HOST=node2.emqx.io"
+        - "EMQX_CLUSTER__DISCOVERY=static"
+        - "EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io, emqx@node3.emqx.io"
+        - "EMQX_WAIT_TIME=5"
+        - "EMQX_NODE__COOKIE=emqx_dist_cookie"
+        - "EMQX_LOG__CONSOLE=console"
+        - "EMQX_ALLOW_ANONYMOUS=true"
+        - "EMQX_LISTENER__TCP__EXTERNAL=1883"
+        - "EMQX_LISTENER__SSL__EXTERNAL=8883"
+        - "EMQX_LISTENER__WS__EXTERNAL=8083"
+        - "EMQX_LISTENER__WSS__EXTERNAL=8084"
+        - "EMQX_LISTENER__API__MGMT=8080"
+        - "EMQX_MQTT__MAX_PACKET_SIZE=64KB"
+        - "EMQX_LOADED_PLUGINS=emqx_recon,emqx_retainer,emqx_management,emqx_dashboard"
+        - "EMQX_LOADED_MODULES=emqx_mod_acl_internal,emqx_mod_acl_internal"
+        networks:
+            emqx-bridge:
+                aliases:
+                - node2.emqx.io
+        volumes:
+            - vol-emqx2-data:/opt/emqx/data
+            - vol-emqx2-etc:/opt/emqx/etc
+            - vol-emqx2-log:/opt/emqx/log
+    emqx3:
+        image: emqx/emqx:4.3.3
+        restart: always
+        container_name: node3.emqx.io
+        hostname: node3.emqx.io
+        environment:
+        - "EMQX_NAME=emqx"
+        - "EMQX_HOST=node3.emqx.io"
+        - "EMQX_CLUSTER__DISCOVERY=static"
+        - "EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io, emqx@node3.emqx.io"
+        - "EMQX_WAIT_TIME=5"
+        - "EMQX_NODE__COOKIE=emqx_dist_cookie"
+        - "EMQX_LOG__CONSOLE=console"
+        - "EMQX_ALLOW_ANONYMOUS=true"
+        - "EMQX_LISTENER__TCP__EXTERNAL=1883"
+        - "EMQX_LISTENER__SSL__EXTERNAL=8883"
+        - "EMQX_LISTENER__WS__EXTERNAL=8083"
+        - "EMQX_LISTENER__WSS__EXTERNAL=8084"
+        - "EMQX_LISTENER__API__MGMT=8080"
+        - "EMQX_MQTT__MAX_PACKET_SIZE=64KB"
+        - "EMQX_LOADED_PLUGINS=emqx_recon,emqx_retainer,emqx_management,emqx_dashboard"
+        - "EMQX_LOADED_MODULES=emqx_mod_acl_internal,emqx_mod_acl_internal"
+        networks:
+            emqx-bridge:
+                aliases:
+                - node3.emqx.io
+        volumes:
+            - vol-emqx3-data:/opt/emqx/data
+            - vol-emqx3-etc:/opt/emqx/etc
+            - vol-emqx3-log:/opt/emqx/log
+    haproxy:
+        build: ./haproxy
+        restart: always
+        container_name: haproxy
+        hostname: haproxy
+        depends_on:
+            - emqx1
+            - emqx2
+            - emqx3 
+        ports:
+          - "1883:1883"
+          - "1936:1936"
+        networks:
+         - emqx-bridge        
+volumes:
+    vol-emqx1-data:
+    vol-emqx1-etc:
+    vol-emqx1-log:
+    vol-emqx2-data:
+    vol-emqx2-etc:
+    vol-emqx2-log:
+    vol-emqx3-data:
+    vol-emqx3-etc:
+    vol-emqx3-log:
+
+networks:
+  emqx-bridge:
+    driver: bridge
+    ipam:
+        driver: default
+        config:
+            - subnet: 192.168.0.0/24

@@ -6,6 +6,7 @@ import 'package:esptouch/ui/shared/globals.dart';
 import '../widgets/homepagewidget/homeappbar.dart';
 import '../widgets/homepagewidget/homelandscapelayout.dart';
 import '../widgets/homepagewidget/homeportraitlayout.dart';
+import 'package:esptouch/ui/views/add_device_view.dart';
 
 class UserHome extends StatefulWidget {
   @override
@@ -27,7 +28,10 @@ class _UserHomeState extends State<UserHome> {
       ),
       title: 'AKASHIC',
       initialRoute: '/',
-      routes: {"/": (context) => HomeView()},
+      routes: {
+        "/": (context) => HomeView(),
+        '/add-device': (context) => AddDeviceView(),
+      },
     );
   }
 }

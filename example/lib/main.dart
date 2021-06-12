@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:esptouch/ui/shared/globals.dart';
 import 'package:esptouch/ui/views/login_view.dart';
-import 'package:esptouch/ui/views/add_device_view.dart';
 import 'package:esptouch/ui/views/connectivity_view.dart';
 import 'package:esptouch/ui/views/location_permissions.dart';
 import 'package:esptouch/ui/views/test_view.dart';
@@ -31,7 +30,7 @@ class AppComponentState extends State<MyApp> {
         primaryColor: Global.mediumBlue,
       ),
       title: 'AKASHIC',
-      initialRoute: "/home",
+      initialRoute: isUserActice ? "/home" : "/",
       routes: {
         // '/': (BuildContext context) {
         //   return Scaffold(
@@ -47,20 +46,11 @@ class AppComponentState extends State<MyApp> {
         //     ),
         //   );
         // },
-        "/": (context) => isUserActice ? AddDeviceView() : LoginView(),
+        "/": (context) => LoginView(),
+        "/home": (context) => UserHome(),
         "/location": (context) => LocationPermission(),
         "/connectivity": (context) => ConnectivityView(),
         "/test": (context) => TestView(),
-        "/home": (context) => UserHome(),
-        // "/regi-info": (context) => RegisterInfoScreen(),
-        // "/regi-birth": (context) => RegisterBirthScreen(),
-        // "/regi-card": (context) => CardAuthentScreen(),
-        // "/regi-shop": (context) => RegisterShopScreen(),
-        // "/regi-pass": (context) => RegisterPasswordScreen(),
-        // "/regi-mem": (context) => RegisterMemDayScreen(),
-        // "/regi-cfin": (context) => RegisterConfirmInfoScreen(),
-        // "/regi-comp": (context) => RegisterCompleteScreen(),
-        // "/main": (context) => MainContainer(),
       },
     );
   }
