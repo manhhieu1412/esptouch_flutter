@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:esptouch/ui/shared/globals.dart';
 
+class RoundedButtonWidget extends ButtonWidget {
+  RoundedButtonWidget(
+      {required String title,
+      bool hasBorder = false,
+      GestureTapCallback? onTab})
+      : super(title: title, hasBorder: hasBorder, onTab: onTab, height: 48.0);
+}
+
 class ButtonWidget extends StatelessWidget {
   final String title;
   final bool hasBorder;
   final GestureTapCallback? onTab;
+  final double height;
 
-  ButtonWidget({
-    required this.title,
-    this.hasBorder = false,
-    this.onTab,
-  });
+  ButtonWidget(
+      {required this.title,
+      this.hasBorder = false,
+      this.onTab,
+      this.height = 54.0});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class ButtonWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           onTap: this.onTab,
           child: Container(
-            height: 60.0,
+            height: height,
             child: Center(
               child: Text(
                 title,
