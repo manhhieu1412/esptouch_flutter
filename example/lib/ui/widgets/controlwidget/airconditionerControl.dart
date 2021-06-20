@@ -24,6 +24,7 @@ class _AirConditionerControlUnitState extends State<AirConditionerControlUnit>
 
   @override
   void initState() {
+    super.initState();
     _tabController =
         new TabController(length: homeInfoData.length, vsync: this);
   }

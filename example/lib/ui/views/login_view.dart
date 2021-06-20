@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:esptouch/viewmodels/login_model.dart';
 import 'package:esptouch/ui/shared/globals.dart';
 import 'package:esptouch/ui/widgets/button_widget.dart';
 import 'package:esptouch/ui/widgets/textfield_widget.dart';
 import 'package:esptouch/ui/widgets/wave_widget.dart';
-
+import 'package:esptouch/viewmodels/login_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'add_device_view.dart';
 
 class LoginView extends StatelessWidget {
   @override

@@ -27,6 +27,8 @@ services:
             emqx-bridge:
                 aliases:
                 - node1.emqx.io
+        ports:
+            - "31883:1883"
         volumes:
             - vol-emqx1-data:/opt/emqx/data
             - vol-emqx1-etc:/opt/emqx/etc
@@ -99,8 +101,8 @@ services:
         restart: always
         hostname: haproxy
         ports:
-            - "18080:80"        # Haproxy ::18080/haproxyStats
-            - "18083:18083"     # Emqx Dashboard ::18083
+            - "3001:80"        # Haproxy ::18080/haproxyStats
+            - "3000:18083"     # Emqx Dashboard ::18083
             - "1883:1883"       # Emqx TCP ::1883
             - "8083:8083"       # Emqx WS ::8083
         networks:

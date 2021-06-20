@@ -88,6 +88,5 @@ class HomePageCard extends StatelessWidget {
         ),
       );
     });
-    ;
   }
 }

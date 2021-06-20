@@ -39,7 +39,7 @@ class HomeLandScapeLayout extends StatelessWidget {
             ),
           ],
         ),
-        MusicCardWidget(),
+        // MusicCardWidget(),
         AddNewWidget(),
         SizedBox(
           height: 30,

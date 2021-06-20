@@ -6,7 +6,7 @@ class HomePageData extends ChangeNotifier {
   List<UserInfoModel> userInfo = [
     UserInfoModel(
         userImage:
-            'https://content-static.upwork.com/uploads/2014/10/01073429/profilephoto2.jpg',
+            'https://cdt.org/wp-content/uploads/2015/10/2015-10-06-FB-person-640x403.png',
         notificationCount: 1)
   ];
 

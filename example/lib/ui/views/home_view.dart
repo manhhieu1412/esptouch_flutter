@@ -8,6 +8,7 @@ import '../widgets/homepagewidget/homelandscapelayout.dart';
 import '../widgets/homepagewidget/homeportraitlayout.dart';
 import 'package:esptouch/ui/views/add_device_view.dart';
 import 'package:esptouch/ui/views/add_device_view_2.dart';
+import 'package:esptouch/ui/views/add_device_wait_view.dart';
 
 class UserHome extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _UserHomeState extends State<UserHome> {
         "/": (context) => HomeView(),
         '/add-device': (context) => AddDeviceView(),
         '/add-device-2': (context) => AddDeviceView2(),
+        '/add-device-wait': (context) => AddDeviceWaitView(),
       },
     );
   }

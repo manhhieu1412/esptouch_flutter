@@ -28,7 +28,7 @@ class HomePortraitLayout extends StatelessWidget {
             ),
           ],
         ),
-        MusicCardWidget(),
+        // MusicCardWidget(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

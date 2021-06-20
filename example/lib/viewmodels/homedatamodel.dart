@@ -8,13 +8,10 @@ class HomeDataModel {
 }
 
 class UserInfoModel {
-  String userImage;
-  int notificationCount;
+  final String userImage;
+  final int notificationCount;
 
-  UserInfoModel(
-      {this.userImage =
-          'https://content-static.upwork.com/uploads/2014/10/01073429/profilephoto2.jpg',
-      this.notificationCount = 5});
+  UserInfoModel({this.userImage = '', this.notificationCount = 0});
 }
 
 class RoomInfoModel {

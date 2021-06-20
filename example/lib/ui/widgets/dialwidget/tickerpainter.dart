@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+const double LONG_TICK = 15.0;
+const double SHORT_TICK = 5.0;
 
 class TickPainter extends CustomPainter {
-  final LONG_TICK = 15.0;
-  final SHORT_TICK = 5.0;
   final tickCount;
   final tickPerSection;
   final tickInset;
@@ -29,7 +29,9 @@ class TickPainter extends CustomPainter {
     canvas.save();
 
     for (int i = 0; i < tickCount; i++) {
-      currentTem>=i?tickPaint.color = Colors.blueAccent:tickPaint.color = Colors.deepOrange;
+      currentTem >= i
+          ? tickPaint.color = Colors.blueAccent
+          : tickPaint.color = Colors.deepOrange;
       final ticklenght = i % tickPerSection == 0 ? LONG_TICK : SHORT_TICK;
       canvas.drawLine(
         Offset(0.0, radius),

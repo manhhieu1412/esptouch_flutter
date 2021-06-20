@@ -17,7 +17,6 @@ class BottomControlPanel extends StatelessWidget {
     return Consumer<HomeInfoData>(
       builder: (context, data, child) {
         HomeInfoModel roomData = data.infoData[tabIndex];
-        bool ismyFanOn = roomData.isFanOn;
         return Container(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 35),
